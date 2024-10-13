@@ -14,6 +14,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, "docs"),
     filename: "bundle.js",
+    publicPath: "/"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -25,6 +26,7 @@ const config = {
     new webpack.DefinePlugin({
       "process.env": JSON.stringify(dotenv.parsed),
     }),
+    new webpack.HotModuleReplacementPlugin() // HMR 플러그인 추가
   ],
   module: {
     rules: [
@@ -61,11 +63,12 @@ const config = {
 
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "docs"),
+      directory: path.resolve(__dirname, "public"),
     },
     compress: true,
     port: 3000,
     open: true,
+    hot: true
   },
 };
 
