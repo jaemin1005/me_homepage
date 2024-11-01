@@ -1,0 +1,26 @@
+import { IconButton, Typography } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
+export function GitHubLabel({
+  title,
+  createAt,
+  url,
+}: {
+  title: string;
+  createAt: string;
+  url: string;
+}) {
+  return (
+    <div className="group w-80 h-12 flex justify-between items-center py-4 px-2 rounded-lg bg-[#65817F] bg-opacity-50 cursor-pointer transition-transform active:scale-95">
+      <div className="overflow-hidden">
+        <p className="text-sm text-[#B6AFAF] leading-relaxed text-nowrap overflow-hidden group-hover:text-white">
+          {title}
+        </p>
+        <p className="text-xs font-bold text-[#352C2C] leading-3">{createAt}</p>
+      </div>
+      <IconButton aria-label="git_hub" size="large">
+        <GitHubIcon />
+      </IconButton>
+    </div>
+  );
+}
