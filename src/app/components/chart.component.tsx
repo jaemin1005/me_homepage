@@ -76,7 +76,7 @@ export function Chart() {
     // 날짜별로 정렬된 데이터셋 생성
     // 문자열 날짜(YYYY-MM)가 올바른 순서로 정렬됨
     return Object.keys(commitsByMonth)
-      .sort() 
+      .sort()
       .map((month) => ({
         month,
         commits: commitsByMonth[month],
@@ -89,24 +89,26 @@ export function Chart() {
         <LineChart
           loading
           xAxis={[
-            { scaleType: 'band', data: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] },
+            {
+              scaleType: "band",
+              data: ["A", "B", "C", "D", "E", "F", "G", "H"],
+            },
           ]}
           sx={(theme) => ({
-            border: '1px solid rgba(0, 0, 0, 0.1)',
+            border: "1px solid rgba(0, 0, 0, 0.1)",
             backgroundImage:
-              'linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)',
-            backgroundSize: '35px 35px',
-            backgroundPosition: '20px 20px, 20px 20px',
-            ...theme.applyStyles('dark', {
-              borderColor: 'rgba(255,255,255, 0.1)',
+              "linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)",
+            backgroundSize: "35px 35px",
+            backgroundPosition: "20px 20px, 20px 20px",
+            ...theme.applyStyles("dark", {
+              borderColor: "rgba(255,255,255, 0.1)",
               backgroundImage:
-                'linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)',
+                "linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)",
             }),
           })}
-          series={[]}  
+          series={[]}
           slots={{ loadingOverlay: LoadingOverlay }}
-          height={300}
-          margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
+          height={240}
         />
       ) : (
         <LineChart
@@ -114,22 +116,32 @@ export function Chart() {
           yAxis={[{ dataKey: "commits" }]}
           xAxis={[{ dataKey: "month", scaleType: "band" }]}
           sx={(theme) => ({
-            border: '1px solid rgba(0, 0, 0, 0.1)',
+            border: "1px solid rgba(0, 0, 0, 0.1)",
             backgroundImage:
-              'linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)',
-            backgroundSize: '35px 35px',
-            backgroundPosition: '20px 20px, 20px 20px',
-            ...theme.applyStyles('dark', {
-              borderColor: 'rgba(255,255,255, 0.1)',
+              "linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)",
+            backgroundSize: "35px 35px",
+            backgroundPosition: "20px 20px, 20px 20px",
+            ...theme.applyStyles("dark", {
+              borderColor: "rgba(255,255,255, 0.1)",
               backgroundImage:
-                'linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)',
+                "linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)",
             }),
+            '& .MuiAreaElement-root': {
+              fill: 'url(#area-gradient)', // 정의한 그라데이션을 참조
+            },
           })}
-          series={[{ dataKey: "commits" }]}
-          height={300}
+          series={[{ dataKey: "commits", area: true }]}
+          height={240}
           margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
           //grid={{ vertical: true, horizontal: true }}
-        />
+        >
+          <defs>
+            <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(15, 140, 140, 0.5)" />
+              <stop offset="100%" stopColor="rgba(15, 140, 140, 0)" />
+            </linearGradient>
+          </defs>
+        </LineChart>
       )}
     </>
   );
