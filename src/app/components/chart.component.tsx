@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useGitState } from "../context/git_state.context";
+import { useGitState } from "../../../context/git_state.context";
 import { LineChart } from "@mui/x-charts";
 import { useDrawingArea, useXScale, useYScale } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
