@@ -2,11 +2,11 @@ import { MeContainer } from "./me_container.component";
 
 export function Me() {
   return (
-    <div className="w-screen min-h-screen px-20 py-[135px] flex flex-col justify-between">
+    <div className="w-screen min-h-screen px-20 py-36 flex flex-col justify-between">
       <h1
         className="font-inter font-bold text-8xl leading-[116px] tracking-[0.1em] 
            bg-gradient-to-r from-[#8F9795] to-[#5EA196] text-transparent 
-           bg-clip-text shadow-md"
+           bg-clip-text"
       >
         PORTFOLIO
       </h1>
