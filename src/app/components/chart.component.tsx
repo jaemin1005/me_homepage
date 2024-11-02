@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useGitState } from "../../../context/git_state.context";
 import { LineChart } from "@mui/x-charts";
 import { useDrawingArea, useXScale, useYScale } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
-import { CircularProgress } from "@mui/material";
-
+import { IconButton } from "@mui/material";
+import { useRepoState } from "../../../context/select_repo.context";
+import RefreshIcon from "@mui/icons-material/Refresh";
 const ratios = [0.2, 0.8, 0.6, 0.5];
 
 const LoadingReact = styled("rect")({
@@ -58,6 +59,9 @@ function LoadingOverlay() {
 
 export function Chart() {
   const gitData = useGitState();
+  const { name, setName } = useRepoState();
+
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
 
   // 날짜별 커밋 수를 계산하는 함수
   const dataset = useMemo(() => {
@@ -78,10 +82,52 @@ export function Chart() {
     return Object.keys(commitsByMonth)
       .sort()
       .map((month) => ({
-        month,
+        xAxis: month,
         commits: commitsByMonth[month],
       }));
   }, [gitData]);
+
+  // 선택된 월의 일일 데이터셋
+  const dailyDataset = useMemo(() => {
+    if (!selectedMonth && !name) return [];
+
+    const commitsByDay: { [key: string]: number } = {};
+
+    if (name) {
+      const repo = gitData.find((repo) => repo.name === name);
+      if (repo === undefined) return [];
+
+      repo.commits.forEach((commit) => {
+        const commitDate = new Date(commit.create_at || "");
+        const day = commitDate.toISOString().slice(0, 10);
+        commitsByDay[day] = (commitsByDay[day] || 0) + 1;
+      });
+    } else {
+      gitData.forEach((repo) => {
+        repo.commits.forEach((commit) => {
+          const commitDate = new Date(commit.create_at || "");
+          const commitMonth = commitDate.toISOString().slice(0, 7);
+
+          if (commitMonth === selectedMonth) {
+            const day = commitDate.toISOString().slice(0, 10);
+            commitsByDay[day] = (commitsByDay[day] || 0) + 1;
+          }
+        });
+      });
+    }
+
+    return Object.keys(commitsByDay)
+      .sort()
+      .map((day) => ({
+        xAxis: day,
+        commits: commitsByDay[day],
+      }));
+  }, [gitData, selectedMonth, name]);
+
+  const clickRefreshBtn = () => {
+    setName(undefined);
+    setSelectedMonth(null);
+  };
 
   return (
     <>
@@ -111,37 +157,62 @@ export function Chart() {
           height={240}
         />
       ) : (
-        <LineChart
-          dataset={dataset}
-          yAxis={[{ dataKey: "commits" }]}
-          xAxis={[{ dataKey: "month", scaleType: "band" }]}
-          sx={(theme) => ({
-            border: "1px solid rgba(0, 0, 0, 0.1)",
-            backgroundImage:
-              "linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)",
-            backgroundSize: "35px 35px",
-            backgroundPosition: "20px 20px, 20px 20px",
-            ...theme.applyStyles("dark", {
-              borderColor: "rgba(255,255,255, 0.1)",
+        <div className="relative">
+          <LineChart
+            dataset={dailyDataset.length !== 0 ? dailyDataset : dataset}
+            yAxis={[{ dataKey: "commits" }]}
+            xAxis={[
+              { dataKey: "xAxis", scaleType: "band", tickPlacement: "middle" },
+            ]}
+            sx={(theme) => ({
+              border: "1px solid rgba(0, 0, 0, 0.1)",
               backgroundImage:
-                "linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)",
-            }),
-            '& .MuiAreaElement-root': {
-              fill: 'url(#area-gradient)', // 정의한 그라데이션을 참조
-            },
-          })}
-          series={[{ dataKey: "commits", area: true }]}
-          height={240}
-          margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
-          //grid={{ vertical: true, horizontal: true }}
-        >
-          <defs>
-            <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(15, 140, 140, 0.5)" />
-              <stop offset="100%" stopColor="rgba(15, 140, 140, 0)" />
-            </linearGradient>
-          </defs>
-        </LineChart>
+                "linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)",
+              backgroundSize: "35px 35px",
+              backgroundPosition: "20px 20px, 20px 20px",
+              ...theme.applyStyles("dark", {
+                borderColor: "rgba(255,255,255, 0.1)",
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)",
+              }),
+              "& .MuiAreaElement-root": {
+                fill: "url(#area-gradient)", // 정의한 그라데이션을 참조
+              },
+            })}
+            series={[
+              {
+                dataKey: "commits",
+                area: true,
+                valueFormatter: (value) => `${value} commits `,
+              },
+            ]}
+            height={240}
+            margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
+            //grid={{ vertical: true, horizontal: true }}
+            onAxisClick={(event, d) => {
+              if (selectedMonth === null && name === undefined)
+                setSelectedMonth(dataset[d?.dataIndex!]?.xAxis || null);
+            }}
+            className="relative"
+          >
+            <defs>
+              <linearGradient id="area-gradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="rgba(15, 140, 140, 0.5)" />
+                <stop offset="100%" stopColor="rgba(15, 140, 140, 0)" />
+              </linearGradient>
+            </defs>
+          </LineChart>
+          {dailyDataset.length > 0 && (
+            <IconButton
+              onClick={() => {
+                clickRefreshBtn();
+              }}
+              className="absolute top-3 right-3 text-[#B6AFAF] hover:text-white"
+            >
+              <RefreshIcon />
+            </IconButton>
+          )}
+        </div>
       )}
     </>
   );
