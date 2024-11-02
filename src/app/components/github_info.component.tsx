@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import { useGitState } from "../../../context/git_state.context";
 import { Commit, Repository } from "../../../interfaces/git_state.interface";
 import { GitHubLabel } from "./github_label.component";
+import { useRepoState } from "../../../context/select_repo.context";
 
 type Select = "Commits" | "Repository";
 
 export function GitHubInfo() {
-  const [select, setSelect] = useState<Select>("Commits");
+  const [select, setSelect] = useState<Select>("Repository");
   const [commits, setCommits] = useState<Commit[]>([]);
   const [repos, setRepos] = useState<Repository[]>([]);
   const [page, setPage] = useState(1);
 
   const gitData = useGitState();
+  const { setName } = useRepoState();
   const itemsPerPage = 6;
 
   // 데이터 시간순서대로 정렬
@@ -58,18 +60,18 @@ export function GitHubInfo() {
     <div className="mt-24 flex flex-col">
       <Breadcrumbs aria-label="breadcrumb">
         <Button
-          onClick={() => handleClick("Commits")}
-          color={select === "Commits" ? "primary" : "inherit"}
-          className="text-sm font-semibold"
-        >
-          Commits
-        </Button>
-        <Button
           onClick={() => handleClick("Repository")}
           color={select === "Repository" ? "primary" : "inherit"}
           className="text-sm font-semibold"
         >
           Repository
+        </Button>
+        <Button
+          onClick={() => handleClick("Commits")}
+          color={select === "Commits" ? "primary" : "inherit"}
+          className="text-sm font-semibold"
+        >
+          Commits
         </Button>
       </Breadcrumbs>
       <div className="w-max grid grid-cols-1 grid-flow-row-6 gap-x-4 gap-y-4 mt-2 lg:grid-cols-2 lg:grid-flow-row-3">
@@ -79,8 +81,12 @@ export function GitHubInfo() {
             return (
               <GitHubLabel
                 key={idx}
-                title={typeData.message.split('\n')[0]}
-                createAt={typeData.create_at ? typeData.create_at.replace("T", " ").replace("Z", "") : ""}
+                title={typeData.message.split("\n")[0]}
+                createAt={
+                  typeData.create_at
+                    ? typeData.create_at.replace("T", " ").replace("Z", "")
+                    : ""
+                }
                 url={typeData.html_url}
               />
             );
@@ -90,8 +96,15 @@ export function GitHubInfo() {
               <GitHubLabel
                 key={idx}
                 title={typeData.name}
-                createAt={typeData.updated_at ? typeData.updated_at.replace("T", " ").replace("Z", "") : ""}
+                createAt={
+                  typeData.updated_at
+                    ? typeData.updated_at.replace("T", " ").replace("Z", "")
+                    : ""
+                }
                 url={typeData.html_url}
+                callBack={() => {
+                  setName(typeData.name);
+                }}
               />
             );
           }
