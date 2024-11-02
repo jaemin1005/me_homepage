@@ -7,15 +7,15 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 export function ProfileCard() {
   return (
     <Card
-      className="max-w-80 bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(27,205,166,0.2)_100%)] 
-            backdrop-blur-lg rounded-sm mt-52"
+      className="max-w-80 bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(41,141,146,0.2)_100%)] 
+            backdrop-blur-lg rounded-md mt-36"
     >
       <CardHeader
         avatar={<Avatar alt="avartar" src="/avartar.jpeg" />}
@@ -32,13 +32,13 @@ export function ProfileCard() {
       </CardContent>
       <CardActions>
         <IconButton>
-            <HomeOutlinedIcon/>
+          <HomeOutlinedIcon />
         </IconButton>
         <IconButton>
-            <MailOutlineIcon/>
+          <MailOutlineIcon />
         </IconButton>
         <IconButton>
-            <GitHubIcon/>
+          <GitHubIcon />
         </IconButton>
       </CardActions>
     </Card>
