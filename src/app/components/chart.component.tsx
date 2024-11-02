@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useGitState } from "../../../context/git_state.context";
 import { LineChart } from "@mui/x-charts";
 import { useDrawingArea, useXScale, useYScale } from "@mui/x-charts/hooks";
@@ -88,7 +88,7 @@ export function Chart() {
   }, [gitData]);
 
   // 선택된 월의 일일 데이터셋
-  const dailyDataset = useMemo(() => {
+  const dailyDataset = useCallback(() => {
     if (!selectedMonth && !name) return [];
 
     const commitsByDay: { [key: string]: number } = {};
@@ -159,7 +159,7 @@ export function Chart() {
       ) : (
         <div className="relative">
           <LineChart
-            dataset={dailyDataset.length !== 0 ? dailyDataset : dataset}
+            dataset={name || selectedMonth ? dailyDataset() : dataset}
             yAxis={[{ dataKey: "commits" }]}
             xAxis={[
               { dataKey: "xAxis", scaleType: "band", tickPlacement: "middle" },
@@ -190,8 +190,8 @@ export function Chart() {
             margin={{ left: 30, right: 30, top: 30, bottom: 30 }}
             //grid={{ vertical: true, horizontal: true }}
             onAxisClick={(event, d) => {
-              if (selectedMonth === null && name === undefined)
-                setSelectedMonth(dataset[d?.dataIndex!]?.xAxis || null);
+              if (selectedMonth === null && name === undefined && d)
+                setSelectedMonth(dataset[d.dataIndex!]?.xAxis || null);
             }}
             className="relative"
           >
@@ -202,7 +202,7 @@ export function Chart() {
               </linearGradient>
             </defs>
           </LineChart>
-          {dailyDataset.length > 0 && (
+          {(name || selectedMonth) && (
             <IconButton
               onClick={() => {
                 clickRefreshBtn();
