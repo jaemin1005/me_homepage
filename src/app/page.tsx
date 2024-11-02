@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub } from "./components/github.component";
 import { ProfileCard } from "./components/profile_card.component";
+import { Me } from "./components/me.component";
 
 const darkTheme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ export default function Home() {
       <CssBaseline />
       <div className="grid grid-cols-12 bg-custom-gradient bg-background">
         <div className="flex flex-col self-center justify-center col-span-8">
+          <Me/>
           <GitHub />
         </div>
         <div className="col-span-4">
