@@ -207,7 +207,7 @@ export function Chart() {
               onClick={() => {
                 clickRefreshBtn();
               }}
-              className="absolute top-3 right-3 text-[#B6AFAF] hover:text-white"
+              className="absolute top-3 right-3"
             >
               <RefreshIcon />
             </IconButton>
