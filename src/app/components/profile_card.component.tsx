@@ -10,7 +10,6 @@ import {
   IconButton,
   Snackbar,
   SnackbarCloseReason,
-  Typography,
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -19,7 +18,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
 import { openWindow } from "../../../utils/open_window";
 
-export function ProfileCard() {
+export function ProfileCard({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -64,14 +63,7 @@ export function ProfileCard() {
           title="Hwang Jae Min"
           subheader="ghkdwoals1005@gmail.com"
         />
-        <CardContent>
-          <Typography variant="subtitle2">Readme</Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-        </CardContent>
+        <CardContent>{children}</CardContent>
         <CardActions>
           <IconButton onClick={clickHomeIcon}>
             <HomeOutlinedIcon />
