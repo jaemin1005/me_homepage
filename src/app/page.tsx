@@ -8,6 +8,7 @@ import { Me } from "./components/me.component";
 import { useEffect, useRef, useState } from "react";
 import { MeProfileCardBody } from "./components/profile_body_components/me_profile_card_body";
 import { GitHubProfileCardBody } from "./components/profile_body_components/github_profile_card_body";
+import { Project } from "./components/project.component";
 
 const darkTheme = createTheme({
   palette: {
@@ -83,6 +84,9 @@ export default function Home() {
           </section>
           <section ref={sectionRefs[1]}>
             <GitHub />
+          </section>
+          <section className="px-20 min-h-screen">
+            <Project />
           </section>
         </div>
         <div className="col-span-4">
