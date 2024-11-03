@@ -18,7 +18,7 @@ export const THEME_MAP: ProjectInfo = {
 
 export const FAST_EXCEl_TO_JSON: ProjectInfo = {
   name: "EXCEL TO JSON",
-  skills: ["NextJs", "Web Assembly", "Rust", "Amplify", "Google Analytics"],
+  skills: ["NextJs", "Web Assembly", "Rust", "Amplify", "Git Action", "npm"],
   imageUrl: "/avartar.jpeg",
   body: "내용",
 };
@@ -26,6 +26,13 @@ export const FAST_EXCEl_TO_JSON: ProjectInfo = {
 export const HOME_PAGE: ProjectInfo = {
     name: "HOME PAGE",
     skills: ["NextJs", "AWS Lambda", "AWS EventBridge", "MongoDB"],
+    imageUrl: "/avartar.jpeg",
+    body: "내영",
+}
+
+export const OPEN_PORT_CHECK: ProjectInfo = {
+    name: "Open Port Check",
+    skills: ["Tauri", "Leptos", "Rust", "Git Action"],
     imageUrl: "/avartar.jpeg",
     body: "내영",
 }

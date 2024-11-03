@@ -8,6 +8,7 @@ import {
   FAST_EXCEl_TO_JSON,
   HOME_PAGE,
   NO_GUI_CLUB,
+  OPEN_PORT_CHECK,
   TEAM_GG,
   THEME_MAP,
   WHISPER_IN_A_BOTTLE,
@@ -28,6 +29,7 @@ export function Project() {
     THEME_MAP,
     FAST_EXCEl_TO_JSON,
     HOME_PAGE,
+    OPEN_PORT_CHECK,
     NO_GUI_CLUB,
   ];
 
