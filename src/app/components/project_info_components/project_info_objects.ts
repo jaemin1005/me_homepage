@@ -25,7 +25,7 @@ export const FAST_EXCEl_TO_JSON: ProjectInfo = {
 
 export const HOME_PAGE: ProjectInfo = {
     name: "HOME PAGE",
-    skills: ["NextJs", "AWS Lambda", "AWS EventBridge", "MongoDB"],
+    skills: ["NextJs", "Lambda", "Event Bridge", "MongoDB"],
     imageUrl: "/avartar.jpeg",
     body: "내영",
 }
@@ -53,7 +53,7 @@ export const BOOK_MANAGEMENT: ProjectInfo = {
 
 export const WHISPER_IN_A_BOTTLE: ProjectInfo = {
     name: "Whisper In A Bottle",
-    skills: ["Nextjs", "Nestjs", "ThreeJs", "Web Socket", "Nginx", "AWS RDS"],
+    skills: ["Nextjs", "Nestjs", "ThreeJs", "Socket.io", "Nginx", "AWS RDS"],
     imageUrl: "/avartar.jpeg",
     body: "내용",
 }
