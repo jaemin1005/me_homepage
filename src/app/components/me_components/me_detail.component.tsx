@@ -21,7 +21,9 @@ export function MeDetail() {
   return (
     <>
       <div className="h-[300px] w-full">
-        <h1 className="font-inter font-bold text-2xl text-[#298D92]">{curInfo.title}</h1>
+        <h1 className="font-inter font-bold text-2xl text-[#298D92]">
+          {curInfo.title}
+        </h1>
         <p
           className="font-inter font-bold text-lg text-[#B6AFAF] hover:text-[#e0dddd]"
           dangerouslySetInnerHTML={{ __html: curInfo.body }}

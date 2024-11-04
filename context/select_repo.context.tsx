@@ -6,22 +6,22 @@ interface SelectRepoContextProps {
 }
 
 const selectRepoContext = createContext<SelectRepoContextProps>({
-    name: undefined,
-    setName: () => {}
-  });
-  
-  export const SelectRepoProvider = ({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) => {
-    const [name, setName] = useState<string>();
-  
-    return (
-      <selectRepoContext.Provider value={{ name, setName }}>
-        {children}
-      </selectRepoContext.Provider>
-    );
-  };
-  
-  export const useRepoState = () => useContext(selectRepoContext);
+  name: undefined,
+  setName: () => {},
+});
+
+export const SelectRepoProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [name, setName] = useState<string>();
+
+  return (
+    <selectRepoContext.Provider value={{ name, setName }}>
+      {children}
+    </selectRepoContext.Provider>
+  );
+};
+
+export const useRepoState = () => useContext(selectRepoContext);
