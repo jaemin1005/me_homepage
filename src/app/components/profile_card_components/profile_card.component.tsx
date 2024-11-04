@@ -16,7 +16,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
-import { openWindow } from "../../../utils/open_window";
+import { openWindow } from "../../../../utils/open_window";
 
 export function ProfileCard({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -56,7 +56,7 @@ export function ProfileCard({ children }: { children: React.ReactNode }) {
     <>
       <Card
         className="max-w-80 bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(41,141,146,0.2)_100%)] 
-            backdrop-blur-lg rounded-md mt-36 sticky top-36"
+            backdrop-blur-lg rounded-[20px] mt-36 sticky top-36"
       >
         <CardHeader
           avatar={<Avatar alt="avartar" src="/avartar.jpeg" />}

@@ -1,9 +1,9 @@
 import { Breadcrumbs, Button, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useGitState } from "../../../context/git_state.context";
-import { Commit, Repository } from "../../../interfaces/git_state.interface";
+import { useGitState } from "../../../../context/git_state.context";
+import { Commit, Repository } from "../../../../interfaces/git_state.interface";
 import { GitHubLabel } from "./github_label.component";
-import { useRepoState } from "../../../context/select_repo.context";
+import { useRepoState } from "../../../../context/select_repo.context";
 
 type Select = "Commits" | "Repository";
 
@@ -74,7 +74,7 @@ export function GitHubInfo() {
           Commits
         </Button>
       </Breadcrumbs>
-      <div className="w-max grid grid-cols-1 grid-flow-row-6 gap-x-4 gap-y-4 mt-2 lg:grid-cols-2 lg:grid-flow-row-3">
+      <div className="w-full sm:w-max grid gap-x-4 gap-y-4 mt-2 grid-cols-2 grid-flow-row-3">
         {displayedData.map((data, idx) => {
           if (select === "Commits") {
             const typeData = data as Commit;

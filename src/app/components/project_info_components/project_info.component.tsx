@@ -106,7 +106,7 @@ export function ProjectInfo({
           </Typography>
         </Image>
       </ImageButton>
-      <div className="absolute bottom-0 left-0 right-0 mx-3 mb-3 flex flex-wrap gap-2">
+      <div className="absolute bottom-0 left-0 right-0 mx-3 mb-3 grid grid-cols-3 gap-2">
         {skills.map((value, idx) => (
           <Chip
             key={idx}
