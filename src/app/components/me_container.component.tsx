@@ -14,7 +14,7 @@ export function MeContainer({
           {title}
         </p>
       ) : <div className="mt-2"></div>}
-      <div className="flex gap-x-2">
+      <div className="flex gap-2 flex-wrap">
         {tags.map((value, idx) => (
           <Button key={idx} variant="outlined">
             {value}
