@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { MeProfileCardBody } from "./components/profile_body_components/me_profile_card_body";
 import { GitHubProfileCardBody } from "./components/profile_body_components/github_profile_card_body";
 import { Project } from "./components/project.component";
+import { SkillsInfo } from "./components/\bskill_components/skills_info.component";
 
 const darkTheme = createTheme({
   palette: {
@@ -77,19 +78,22 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div className="grid grid-cols-12 bg-custom-gradient bg-background">
-        <div className="flex flex-col self-center justify-center col-span-8">
-          <section ref={sectionRefs[0]}>
+      <div className="flex justify-center lg:justify-around bg-custom-gradient bg-background">
+        <div className="flex flex-col self-center justify-center lg:w-4/6 w-[95%]">
+          <section ref={sectionRefs[0]} className="min-h-min">
             <Me />
+          </section>
+          <section>
+            <SkillsInfo />
           </section>
           <section ref={sectionRefs[1]}>
             <GitHub />
           </section>
-          <section className="px-20 min-h-screen">
+          <section className="min-h-screen">
             <Project />
           </section>
         </div>
-        <div className="col-span-4">
+        <div className="hidden lg:block">
           <ProfileCard>{profileBody}</ProfileCard>
         </div>
       </div>
