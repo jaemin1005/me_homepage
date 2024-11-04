@@ -3,11 +3,11 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub } from "./components/github_components/github.component";
-import { ProfileCard } from "./components/profile_body_components/profile_card.component";
+import { ProfileCard } from "./components/profile_card_components/profile_card.component";
 import { Me } from "./components/me_components/me.component";
 import { useEffect, useRef, useState } from "react";
-import { MeProfileCardBody } from "./components/profile_body_components/me_profile_card_body";
-import { GitHubProfileCardBody } from "./components/profile_body_components/github_profile_card_body";
+import { MeProfileCardBody } from "./components/profile_card_components/me_profile_card_body";
+import { GitHubProfileCardBody } from "./components/profile_card_components/github_profile_card_body";
 import { Project } from "./components/project_info_components/project.component";
 import { SkillsInfo } from "./components/\bskill_components/skills_info.component";
 
