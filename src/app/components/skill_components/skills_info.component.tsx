@@ -1,4 +1,4 @@
-import { MeContainer } from "../me_container.component";
+import { MeContainer } from "./skills_container.component";
 
 export function SkillsInfo() {
   return (

@@ -1,8 +1,8 @@
 import { Breadcrumbs, Button } from "@mui/material";
 import { useState } from "react";
 import { ProjectInfo } from "./project_info.component";
-import { ProjectModal } from "./project_info_components/project_modal.component";
-import { ProjectInfo as IProjectInfo } from "../../../interfaces/project_info.interface";
+import { ProjectModal } from "./project_modal.component";
+import { ProjectInfo as IProjectInfo } from "../../../../interfaces/project_info.interface";
 import {
   BOOK_MANAGEMENT,
   FAST_EXCEl_TO_JSON,
@@ -12,7 +12,7 @@ import {
   TEAM_GG,
   THEME_MAP,
   WHISPER_IN_A_BOTTLE,
-} from "./project_info_components/project_info_objects";
+} from "./project_info_objects";
 
 type Select = "Single" | "Team";
 

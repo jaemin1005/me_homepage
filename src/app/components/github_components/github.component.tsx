@@ -1,4 +1,4 @@
-import { SelectRepoProvider } from "../../../context/select_repo.context";
+import { SelectRepoProvider } from "../../../../context/select_repo.context";
 import { Chart } from "./chart.component";
 import { GitHubInfo } from "./github_info.component";
 

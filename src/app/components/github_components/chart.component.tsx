@@ -1,12 +1,12 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { useGitState } from "../../../context/git_state.context";
+import { useGitState } from "../../../../context/git_state.context";
 import { LineChart } from "@mui/x-charts";
 import { useDrawingArea, useXScale, useYScale } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
 import { IconButton } from "@mui/material";
-import { useRepoState } from "../../../context/select_repo.context";
+import { useRepoState } from "../../../../context/select_repo.context";
 import RefreshIcon from "@mui/icons-material/Refresh";
 const ratios = [0.2, 0.8, 0.6, 0.5];
 

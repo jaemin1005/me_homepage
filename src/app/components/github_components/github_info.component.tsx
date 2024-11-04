@@ -1,9 +1,9 @@
 import { Breadcrumbs, Button, Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useGitState } from "../../../context/git_state.context";
-import { Commit, Repository } from "../../../interfaces/git_state.interface";
+import { useGitState } from "../../../../context/git_state.context";
+import { Commit, Repository } from "../../../../interfaces/git_state.interface";
 import { GitHubLabel } from "./github_label.component";
-import { useRepoState } from "../../../context/select_repo.context";
+import { useRepoState } from "../../../../context/select_repo.context";
 
 type Select = "Commits" | "Repository";
 

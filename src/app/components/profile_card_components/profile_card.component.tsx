@@ -16,7 +16,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { useState } from "react";
-import { openWindow } from "../../../utils/open_window";
+import { openWindow } from "../../../../utils/open_window";
 
 export function ProfileCard({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);

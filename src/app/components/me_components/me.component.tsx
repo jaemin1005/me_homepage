@@ -1,16 +1,8 @@
 import {
   SelectMeProvider,
-  useMeState,
-} from "../../../context/select_me.context";
-import { MeDetail } from "./me_components/me_detail.component";
-import {
-  COMMUNICATION_ME,
-  DRIVING_FORCE_ME,
-  PLANNING_SKILL,
-  PROBLEM_SOLVING_SKILL,
-} from "./me_components/me_info_objects";
-import { MePieChart } from "./me_components/pie_chart.component";
-import { MeContainer } from "./me_container.component";
+} from "../../../../context/select_me.context";
+import { MeDetail } from "./me_detail.component";
+import { MePieChart } from "./pie_chart.component";
 
 export function Me() {
   return (

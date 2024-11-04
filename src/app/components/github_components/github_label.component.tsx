@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { openWindow } from "../../../utils/open_window";
+import { openWindow } from "../../../../utils/open_window";
 
 export function GitHubLabel({
   title,
