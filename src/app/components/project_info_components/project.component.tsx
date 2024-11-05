@@ -70,7 +70,7 @@ export function Project() {
           {TEAM}
         </Button>
       </Breadcrumbs>
-      <div className="mt-2 flex flex-wrap gap-6">
+      <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {select === "Single"
           ? SINGLE_PROJECTS.map((project, idx) => (
               <div key={idx} onClick={() => {
