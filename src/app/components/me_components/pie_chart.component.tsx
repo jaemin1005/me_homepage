@@ -2,7 +2,7 @@ import { PieItemIdentifier, PieValueType } from "@mui/x-charts";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useEffect, useState } from "react";
 import {
-  COMMUNICATION_ME,
+  RECORD_ME,
   DRIVING_FORCE_ME,
   PLANNING_SKILL,
   PROBLEM_SOLVING_SKILL,
@@ -12,7 +12,7 @@ import { useMeState } from "../../../../context/select_me.context";
 export function MePieChart() {
   const ME_DATA = [
     DRIVING_FORCE_ME,
-    COMMUNICATION_ME,
+    RECORD_ME,
     PROBLEM_SOLVING_SKILL,
     PLANNING_SKILL,
   ];
