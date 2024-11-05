@@ -7,7 +7,7 @@ import { MePieChart } from "./pie_chart.component";
 export function Me() {
   return (
     <SelectMeProvider>
-      <div className="w-full h-screen pt-36 flex flex-col">
+      <div className="w-full h-screen min-h-min pt-36 flex flex-col">
         <h4
           className="font-inter font-bold text-6xl tracking-[0.1em] 
            text-[#8F9795] py-0 text-wrap"
@@ -17,7 +17,7 @@ export function Me() {
         <h1
           className="font-inter font-bold text-8xl tracking-[0.1em] 
            bg-gradient-to-r from-[#8F9795] to-[#5EA196] text-transparent 
-           bg-clip-text overflow-hidden"
+           bg-clip-text overflow-hidden hidden sm:block"
         >
           HOMEPAGE
         </h1>
