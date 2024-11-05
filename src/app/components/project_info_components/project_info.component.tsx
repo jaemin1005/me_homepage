@@ -79,7 +79,7 @@ export function ProjectInfo({
   skills: string[];
 }) {
   return (
-    <div className="relative w-[300px] rounded-[20px] aspect-[1/1.2] shadow-md shadow-black hover:shadow-lg hover:shadow-black">
+    <div className="relative w-full rounded-[20px] aspect-[1/1.2] shadow-md shadow-black hover:shadow-lg hover:shadow-black">
       <ImageButton
         focusRipple
         className="w-full h-full rounded-[20px]"
