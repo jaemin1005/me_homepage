@@ -14,6 +14,7 @@ import { SkillProfileCardBody } from "./components/profile_card_components/skill
 import { ProjectProfileCardBody } from "./components/profile_card_components/project_profile_card_body";
 
 const darkTheme = createTheme({
+  cssVariables: true,
   palette: {
     mode: "dark", // 다크 모드 활성화
     primary: {

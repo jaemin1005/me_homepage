@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { GitStateProvider } from "../../context/git_state.context";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <AppRouterCacheProvider  options={{ enableCssLayer: true }}>
         <GitStateProvider>
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -32,6 +34,7 @@ export default function RootLayout({
             {children}
           </body>
         </GitStateProvider>
+      </AppRouterCacheProvider>
     </html>
   );
 }
