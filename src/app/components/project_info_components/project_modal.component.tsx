@@ -73,7 +73,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<PublicIcon />}
-                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.publishUrl!);
                 }}
@@ -85,7 +85,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<YouTubeIcon />}
-                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.videoUrl!);
                 }}
@@ -97,7 +97,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<ImportContactsIcon />}
-                className="border-[#8ac55c] text-[#8ac55c] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#8ac55c] text-[#8ac55c] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.reviewUrl!);
                 }}
@@ -109,7 +109,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<EditNoteIcon />}
-                className="border-[#b7c656] text-[#b7c656] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#b7c656] text-[#b7c656] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.notedUrl!);
                 }}
@@ -121,7 +121,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<GitHubIcon />}
-                className="border-[#6287c6] text-[#6287c6] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#6287c6] text-[#6287c6] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.githubUrl!);
                 }}
