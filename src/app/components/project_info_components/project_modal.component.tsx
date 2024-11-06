@@ -40,7 +40,7 @@ export function ProjectModal({
       <Card
         sx={{ ...style }}
         className="bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(41,141,146,0.2)_100%)]
-            shadow-md shadow-black backdrop-blur-sm md:w-[500px] h-2/3 rounded-[20px] overflow-y-scroll"
+            shadow-md shadow-black backdrop-blur-sm md:w-[500px] h-2/3 rounded-[20px] overflow-y-scroll scrollbar-hidden"
       >
         {/* <CardHeader title={projectInfo.name} /> */}
         <CardMedia

@@ -26,3 +26,15 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* src/styles/global.css */
+@layer utilities {
+  .scrollbar-hidden {
+    @apply overflow-auto; /* 필요에 따라 auto 또는 scroll 설정 */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+}
