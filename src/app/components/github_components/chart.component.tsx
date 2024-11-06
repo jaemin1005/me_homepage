@@ -140,7 +140,7 @@ export function Chart() {
 
   // 선택된 월의 일일 데이터셋
   const dailyDataset = useCallback(() => {
-    if (!selectedMonth && !name) return [];
+    if (!selectedMonth && !name && !gitData) return [];
 
     const commitsByDay: { [key: string]: number } = {};
 
