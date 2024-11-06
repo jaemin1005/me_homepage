@@ -40,7 +40,7 @@ export function ProjectModal({
       <Card
         sx={{ ...style }}
         className="bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(41,141,146,0.2)_100%)]
-            shadow-md shadow-black backdrop-blur-sm md:w-[500px] h-2/3 rounded-[20px] overflow-y-scroll scrollbar-hidden"
+            shadow-md shadow-black backdrop-blur-sm md:w-[500px] max-h-[700px] rounded-[20px] overflow-y-scroll scrollbar-hidden"
       >
         {/* <CardHeader title={projectInfo.name} /> */}
         <CardMedia
@@ -131,7 +131,7 @@ export function ProjectModal({
             )}
           </div>
           <h3 className="mt-3 mb-1 font-semibold text-xl">개요</h3>
-          <p>{projectInfo.body}</p>
+          <p className="text-justify mt-0">{projectInfo.body}</p>
         </section>
       </Card>
     </Modal>
