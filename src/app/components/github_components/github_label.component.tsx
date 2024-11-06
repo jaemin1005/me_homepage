@@ -21,10 +21,10 @@ export function GitHubLabel({
       }}
     >
       <div className="overflow-hidden">
-        <p className="text-sm text-[#B6AFAF] leading-relaxed text-nowrap overflow-hidden group-hover:text-white">
+        <p className="text-sm text-[#B6AFAF] leading-none text-nowrap overflow-hidden group-hover:text-white my-0">
           {title}
         </p>
-        <p className="text-xs font-bold text-[#352C2C] leading-3">{createAt}</p>
+        <p className="text-xs font-bold text-[#352C2C] leading-none my-0">{createAt}</p>
       </div>
       <IconButton
         aria-label="git_hub"
