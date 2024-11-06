@@ -20,7 +20,7 @@ export function MeDetail() {
 
   return (
     <>
-      <div className="w-full overflow-y-scroll">
+      <div className="w-full scrollbar-hidden overflow-y-scroll">
         <h1 className="font-inter font-bold text-2xl text-[#298D92] leading-none my-0">
           {curInfo.title}
         </h1>

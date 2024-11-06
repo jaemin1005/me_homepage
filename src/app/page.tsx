@@ -89,7 +89,7 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div className="flex justify-center lg:justify-around bg-custom-gradient bg-background">
+      <div className="flex justify-center gap-x-10 bg-custom-gradient bg-background">
         <div className="flex flex-col self-center justify-center 2xl:w-4/6 w-[95%] w-max-[1200px]">
           <section ref={sectionRefs[0]}>
             <Me />
