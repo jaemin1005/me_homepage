@@ -1,6 +1,4 @@
-import {
-  SelectMeProvider,
-} from "../../../../context/select_me.context";
+import { SelectMeProvider } from "../../../../context/select_me.context";
 import { MeDetail } from "./me_detail.component";
 import { MePieChart } from "./pie_chart.component";
 
@@ -12,7 +10,7 @@ export function Me() {
           className="font-inter font-bold text-6xl tracking-[0.1em] 
            text-[#8F9795] py-0 text-wrap"
         >
-          IT's ME
+          {"IT's ME"}
         </h4>
         <h1
           className="font-inter font-bold text-8xl tracking-[0.1em] 
