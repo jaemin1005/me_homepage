@@ -1,16 +1,11 @@
-import {
-  Card,
-  CardMedia,
-  Chip,
-  Modal,
-  Tooltip,
-} from "@mui/material";
+import { Card, CardMedia, Chip, Modal, Tooltip } from "@mui/material";
 import { ProjectInfo } from "../../../../interfaces/project_info.interface";
 import { Button } from "@mui/material";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import PublicIcon from "@mui/icons-material/Public";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 import { openWindow } from "../../../../utils/open_window";
 
 interface ModalControlProps {
@@ -86,6 +81,18 @@ export function ProjectModal({
                 배포
               </Button>
             )}
+            {projectInfo.videoUrl && (
+              <Button
+                variant="outlined"
+                startIcon={<YouTubeIcon />}
+                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92]"
+                onClick={() => {
+                  openWindow(projectInfo.videoUrl!);
+                }}
+              >
+                영상
+              </Button>
+            )}
             {projectInfo.reviewUrl && (
               <Button
                 variant="outlined"
@@ -95,7 +102,7 @@ export function ProjectModal({
                   openWindow(projectInfo.reviewUrl!);
                 }}
               >
-                요약
+                정보
               </Button>
             )}
             {projectInfo.notedUrl && (
@@ -124,9 +131,7 @@ export function ProjectModal({
             )}
           </div>
           <h3 className="mt-3 mb-1 font-semibold text-xl">개요</h3>
-          <p>
-            {projectInfo.body}
-          </p>
+          <p>{projectInfo.body}</p>
         </section>
       </Card>
     </Modal>
