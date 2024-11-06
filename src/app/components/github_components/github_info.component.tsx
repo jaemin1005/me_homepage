@@ -19,23 +19,25 @@ export function GitHubInfo() {
 
   // 데이터 시간순서대로 정렬
   useEffect(() => {
-    const commits = gitData
-      .map((value) => value.commits)
-      .flat()
-      .sort((a, b) => {
-        const dateA = new Date(a.create_at || "").getTime();
-        const dateB = new Date(b.create_at || "").getTime();
+    if (gitData !== undefined) {
+      const commits = gitData
+        .map((value) => value.commits)
+        .flat()
+        .sort((a, b) => {
+          const dateA = new Date(a.create_at || "").getTime();
+          const dateB = new Date(b.create_at || "").getTime();
+          return dateB - dateA;
+        });
+
+      const repositorys = gitData.sort((a, b) => {
+        const dateA = new Date(a.updated_at || "").getTime();
+        const dateB = new Date(b.updated_at || "").getTime();
         return dateB - dateA;
       });
 
-    const repositorys = gitData.sort((a, b) => {
-      const dateA = new Date(a.updated_at || "").getTime();
-      const dateB = new Date(b.updated_at || "").getTime();
-      return dateB - dateA;
-    });
-
-    setCommits(commits);
-    setRepos(repositorys);
+      setCommits(commits);
+      setRepos(repositorys);
+    }
   }, [gitData]);
 
   function handleClick(newSelect: Select) {
