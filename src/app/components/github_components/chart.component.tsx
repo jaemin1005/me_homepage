@@ -93,10 +93,22 @@ export function Chart() {
 
     calculateTimeRemaining();
 
-    // 매 1분마다 갱싱되게 한다.
-    const interval = setInterval(calculateTimeRemaining, 60000);
+        // 다음 분까지 남은 시간 계산
+    const now = new Date();
+    const millisecondsUntilNextMinute =
+      (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 
-    return () => clearInterval(interval);
+    const timeout = setTimeout(() => {
+      calculateTimeRemaining();
+
+      const interval = setInterval(() => {
+        calculateTimeRemaining();
+      }, 60000);
+
+      return () => clearInterval(interval);
+    }, millisecondsUntilNextMinute);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   // 날짜별 커밋 수를 계산하는 함수
