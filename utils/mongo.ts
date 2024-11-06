@@ -4,10 +4,12 @@
  * 함수가 별도의 인스턴스로 실행될 수 있으며, 인스턴스 간에 상태나 연결이 자동으로 유지되지 않기 때문에
  * 전역으로 선언한다.
  */
-import { MongoClient, MongoClientOptions } from 'mongodb';
+import { MongoClient, MongoClientOptions } from "mongodb";
 
 const uri: string = process.env.MONGODB_URI!;
-const options: MongoClientOptions = {};
+const options: MongoClientOptions = {
+  maxPoolSize: 10,
+};
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
