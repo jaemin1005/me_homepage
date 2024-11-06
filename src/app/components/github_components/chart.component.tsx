@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useGitState } from "../../../../context/git_state.context";
 import { LineChart } from "@mui/x-charts";
 import { useDrawingArea, useXScale, useYScale } from "@mui/x-charts/hooks";
@@ -62,6 +62,42 @@ export function Chart() {
   const { name, setName } = useRepoState();
 
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [timeRemaining, setTimeRemaining] = useState<string>("");
+
+  const targetTime = new Date();
+  targetTime.setDate(targetTime.getDate() + 1);
+  targetTime.setHours(0, 10, 0, 0);
+
+  useEffect(() => {
+    // 타켓 시간 00:10:00 설정
+    // 람다 이벤트 트리거가 00:10:00 호출된다.
+    const targetTime = new Date();
+    targetTime.setDate(targetTime.getDate() + 1);
+    targetTime.setHours(0, 10, 0, 0);
+
+    const calculateTimeRemaining = () => {
+      const now = new Date();
+      const diff = targetTime.getTime() - now.getTime();
+
+      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(
+        2,
+        "0"
+      );
+
+      const minutes = String(
+        Math.ceil((diff % (1000 * 60 * 60)) / (1000 * 60))
+      ).padStart(2, "0");
+
+      setTimeRemaining(`업데이트 남은 시간: ${hours}시간 ${minutes}분`);
+    };
+
+    calculateTimeRemaining();
+
+    // 매 1분마다 갱싱되게 한다.
+    const interval = setInterval(calculateTimeRemaining, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // 날짜별 커밋 수를 계산하는 함수
   const dataset = useMemo(() => {
@@ -212,6 +248,9 @@ export function Chart() {
               <RefreshIcon />
             </IconButton>
           )}
+          <div className="absolute -top-5 right-0 text-gray-600 text-sm">
+            {timeRemaining}
+          </div>
         </div>
       )}
     </>
