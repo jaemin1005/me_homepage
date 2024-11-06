@@ -10,6 +10,8 @@ import { MeProfileCardBody } from "./components/profile_card_components/me_profi
 import { GitHubProfileCardBody } from "./components/profile_card_components/github_profile_card_body";
 import { Project } from "./components/project_info_components/project.component";
 import { SkillsInfo } from "./components/\bskill_components/skills_info.component";
+import { SkillProfileCardBody } from "./components/profile_card_components/skill_profile_card_body";
+import { ProjectProfileCardBody } from "./components/profile_card_components/project_profile_card_body";
 
 const darkTheme = createTheme({
   palette: {
@@ -33,7 +35,7 @@ const darkTheme = createTheme({
 });
 
 export default function Home() {
-  const sectionRefs = [useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const [profileBody, setProfileBody] = useState(<MeProfileCardBody />);
 
   useEffect(() => {
@@ -53,7 +55,15 @@ export default function Home() {
                 break;
 
               case 1:
+                setProfileBody(<SkillProfileCardBody />);
+                break;
+
+              case 2:
                 setProfileBody(<GitHubProfileCardBody />);
+                break;
+              
+              case 3:
+                setProfileBody(<ProjectProfileCardBody/>);
                 break;
             }
           }
@@ -83,13 +93,13 @@ export default function Home() {
           <section ref={sectionRefs[0]}>
             <Me />
           </section>
-          <section>
+          <section ref={sectionRefs[1]}>
             <SkillsInfo />
           </section>
-          <section ref={sectionRefs[1]}>
+          <section ref={sectionRefs[2]}>
             <GitHub />
           </section>
-          <section className="min-h-screen mb-9">
+          <section ref={sectionRefs[3]} className="min-h-screen mb-9">
             <Project />
           </section>
         </div>
