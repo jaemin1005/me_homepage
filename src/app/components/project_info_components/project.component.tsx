@@ -33,7 +33,7 @@ export function Project() {
     NO_GUI_CLUB,
   ];
 
-  const TEAM_PROJECTS = [BOOK_MANAGEMENT, WHISPER_IN_A_BOTTLE, TEAM_GG];
+  const TEAM_PROJECTS = [WHISPER_IN_A_BOTTLE, BOOK_MANAGEMENT, TEAM_GG];
 
   const handleClick = (select: Select) => {
     setSelect(select);
@@ -41,9 +41,9 @@ export function Project() {
 
   const handleClickProjectInfoCallback = (idx: number) => {
     if (select === "Single") {
-        setSelectProject(SINGLE_PROJECTS[idx]);
+      setSelectProject(SINGLE_PROJECTS[idx]);
     } else {
-        setSelectProject(TEAM_PROJECTS[idx]);
+      setSelectProject(TEAM_PROJECTS[idx]);
     }
     setOpen(true);
   };
@@ -70,12 +70,15 @@ export function Project() {
           {TEAM}
         </Button>
       </Breadcrumbs>
-      <div className="mt-2 flex flex-wrap gap-6">
+      <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {select === "Single"
           ? SINGLE_PROJECTS.map((project, idx) => (
-              <div key={idx} onClick={() => {
-                handleClickProjectInfoCallback(idx);
-              }}>
+              <div
+                key={idx}
+                onClick={() => {
+                  handleClickProjectInfoCallback(idx);
+                }}
+              >
                 <ProjectInfo
                   title={project.name}
                   skills={project.skills}
@@ -84,12 +87,19 @@ export function Project() {
               </div>
             ))
           : TEAM_PROJECTS.map((project, idx) => (
-              <ProjectInfo
+              <div
                 key={idx}
-                title={project.name}
-                skills={project.skills}
-                url={project.imageUrl}
-              />
+                onClick={() => {
+                  handleClickProjectInfoCallback(idx);
+                }}
+              >
+                <ProjectInfo
+                  key={idx}
+                  title={project.name}
+                  skills={project.skills}
+                  url={project.imageUrl}
+                />
+              </div>
             ))}
       </div>
       {selectProject && (

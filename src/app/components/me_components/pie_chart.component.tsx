@@ -1,6 +1,6 @@
-import { PieItemIdentifier, PieValueType } from "@mui/x-charts";
+import { PieItemIdentifier } from "@mui/x-charts";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   RECORD_ME,
   DRIVING_FORCE_ME,
@@ -18,13 +18,13 @@ export function MePieChart() {
   ];
 
   const colors = [
-    "#36BC9B",
-    "#2EA184",
-    "#26866E",
-    "#1E6B58",
-    "#175042",
-    "#0F352C",
-    "#071A16",
+    "#288D92",
+    "#469DA1",
+    "#65ADB1",
+    "#84BDC0",
+    "#A2CED0",
+    "#C1DEDF",
+    "#E0EEEF",
   ];
 
   const { setMeInfo } = useMeState();

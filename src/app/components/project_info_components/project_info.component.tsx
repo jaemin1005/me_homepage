@@ -1,6 +1,5 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 import { Chip } from "@mui/material";
@@ -79,7 +78,7 @@ export function ProjectInfo({
   skills: string[];
 }) {
   return (
-    <div className="relative w-[300px] rounded-[20px] aspect-[1/1.2] shadow-md shadow-black hover:shadow-lg hover:shadow-black">
+    <div className="relative w-full rounded-[20px] aspect-[1/1.2] shadow-md shadow-black hover:shadow-lg hover:shadow-black cursor-pointer">
       <ImageButton
         focusRipple
         className="w-full h-full rounded-[20px]"

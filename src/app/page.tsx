@@ -79,7 +79,7 @@ export default function Home() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="flex justify-center lg:justify-around bg-custom-gradient bg-background">
-        <div className="flex flex-col self-center justify-center lg:w-4/6 w-[95%] w-max-[1200px]">
+        <div className="flex flex-col self-center justify-center 2xl:w-4/6 w-[95%] w-max-[1200px]">
           <section ref={sectionRefs[0]}>
             <Me />
           </section>
@@ -93,7 +93,7 @@ export default function Home() {
             <Project />
           </section>
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden 2xl:block w-1/5 max-w-[400px] min-x-[300px]">
           <ProfileCard>{profileBody}</ProfileCard>
         </div>
       </div>
