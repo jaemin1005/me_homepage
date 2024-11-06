@@ -1,8 +1,11 @@
-type UrlType = "publish" | "record" | "review"
-
 export interface ProjectInfo {
-    name: string,
-    skills: string[],
-    imageUrl : string,
-    body: string,
+  name: string;
+  skills: string[];
+  publishUrl?: string;
+  reviewUrl?: string;
+  notedUrl?: string;
+  githubUrl?: string;
+  videoUrl?: string;
+  imageUrl: string;
+  body: string
 }
