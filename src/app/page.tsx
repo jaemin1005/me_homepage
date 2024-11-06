@@ -90,7 +90,7 @@ export default function Home() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="flex justify-center gap-x-10 bg-custom-gradient bg-background">
-        <div className="flex flex-col self-center justify-center 2xl:w-4/6 w-[95%] w-max-[1200px]">
+        <div className="flex flex-col self-center justify-center xl:w-4/6 w-[95%]">
           <section ref={sectionRefs[0]}>
             <Me />
           </section>
@@ -104,7 +104,7 @@ export default function Home() {
             <Project />
           </section>
         </div>
-        <div className="hidden 2xl:block w-1/5 max-w-[400px] min-x-[300px]">
+        <div className="hidden xl:block w-1/5 max-w-[400px] min-x-[300px]">
           <ProfileCard>{profileBody}</ProfileCard>
         </div>
       </div>
