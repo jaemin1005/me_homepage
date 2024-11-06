@@ -49,6 +49,10 @@ export function MePieChart() {
   return (
     <PieChart
       sx={{
+        transition: "transform 0.3s ease-in-out", // 전체 PieChart 애니메이션
+        "&:hover": {
+          transform: "scale(1.1)", // 전체 PieChart를 약간 확대
+        },
         "& .MuiPieArc-root": {
           transition: "transform 0.3s ease-in-out",
         },
