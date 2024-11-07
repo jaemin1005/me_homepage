@@ -14,7 +14,7 @@ const options: MongoClientOptions = {
   socketTimeoutMS: 45000,
   connectTimeoutMS: 10000,
   retryWrites: true,
-  retryReads: true
+  retryReads: true,
 };
 
 // 전역 타입 선언
@@ -23,12 +23,19 @@ declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-// 개발 환경에서 핫 리로딩 시 연결이 재사용되도록 전역 캐싱
-if (!global._mongoClientPromise) {
-  const client = new MongoClient(uri, options);
-  global._mongoClientPromise = client.connect();
-}
+let clientPromise: Promise<MongoClient>;
 
-const clientPromise = global._mongoClientPromise!;
+if (process.env.NODE_ENV === "development") {
+  // 개발 환경에서만 전역 캐싱 사용
+  if (!global._mongoClientPromise) {
+    const client = new MongoClient(uri, options);
+    global._mongoClientPromise = client.connect();
+  }
+  clientPromise = global._mongoClientPromise;
+} else {
+  // 프로덕션 환경에서는 항상 새로운 클라이언트 생성
+  const client = new MongoClient(uri, options);
+  clientPromise = client.connect();
+}
 
 export default clientPromise;
