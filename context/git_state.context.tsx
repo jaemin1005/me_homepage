@@ -14,9 +14,18 @@ export const GitStateProvider = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/repositories");
-      const result = await res.json();
-      setData(result.repositories);
+      try {
+        const res = await fetch("/api/repositories");
+        const result = await res.json();
+
+        if (res.ok) {
+          setData(result.repositories);
+        } else {
+          console.error("API Error", result);
+        }
+      } catch (error) {
+        console.error("Network Error:", error);
+      }
     };
     fetchData();
   }, []);
