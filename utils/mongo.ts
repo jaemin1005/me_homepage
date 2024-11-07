@@ -12,7 +12,7 @@ const options: MongoClientOptions = {
   minPoolSize: 0,              
   serverSelectionTimeoutMS: 60000, 
   socketTimeoutMS: 60000,      
-  connectTimeoutMS: 15000,      
+  connectTimeoutMS: 60000,      
   retryWrites: true,           
   retryReads: true,             
   waitQueueTimeoutMS: 10000    
