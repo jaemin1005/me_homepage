@@ -3,16 +3,16 @@ import { NextResponse } from "next/server";
 import { Readable } from "stream";
 
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION_S3,
+  region: process.env.REGION_S3,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    accessKeyId: process.env.ACCESS_KEY!,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY!,
   },
 });
 
 export async function GET() {
   const bucketName = process.env.S3_BUCKET_NAME!;
-  const fileName = process.env.AWS_FILE_NAME!;
+  const fileName = process.env.FILE_NAME!;
 
   try {
     const command = new GetObjectCommand({
