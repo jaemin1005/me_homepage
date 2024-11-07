@@ -8,13 +8,14 @@ import { MongoClient, MongoClientOptions } from "mongodb";
 
 const uri: string = process.env.MONGODB_URI!;
 const options: MongoClientOptions = {
-  maxPoolSize: 1, // 서버리스 환경에서는 작은 풀 사이즈가 적합
-  minPoolSize: 1, // 최소 풀 사이즈도 1로 설정
-  serverSelectionTimeoutMS: 5000,
-  socketTimeoutMS: 45000,
-  connectTimeoutMS: 10000,
-  retryWrites: true,
-  retryReads: true,
+  maxPoolSize: 1,              
+  minPoolSize: 0,              
+  serverSelectionTimeoutMS: 15000, 
+  socketTimeoutMS: 60000,      
+  connectTimeoutMS: 15000,      
+  retryWrites: true,           
+  retryReads: true,             
+  waitQueueTimeoutMS: 10000    
 };
 
 // 전역 타입 선언
