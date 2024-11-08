@@ -7,7 +7,6 @@ export function MeProfileCardBody() {
         Comment
       </Typography>
       <Typography variant="body2" sx={{ color: "text.secondary" }}>
-        저에 대한 소개는 간단하게 작성하였지만, 저에 대해 더 알고 싶으시면&nbsp;
         <Box
           component="span"
           sx={{

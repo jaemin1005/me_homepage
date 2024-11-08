@@ -1,28 +1,34 @@
-import { SelectMeProvider } from "../../../../context/select_me.context";
+import { useState } from "react";
 import { MeDetail } from "./me_detail.component";
+import {
+  DRIVING_FORCE_ME,
+  PLANNING_SKILL,
+  PROBLEM_SOLVING_SKILL,
+  RECORD_ME,
+} from "./me_info_objects";
 import { MePieChart } from "./pie_chart.component";
+import { MeMain } from "./me_main.component";
 
 export function Me() {
+  const ME_DATA = [
+    DRIVING_FORCE_ME,
+    RECORD_ME,
+    PROBLEM_SOLVING_SKILL,
+    PLANNING_SKILL,
+  ];
+
+  const [meInfo, setMeInfo] = useState<MeInfo | null>(null);
+
   return (
-    <SelectMeProvider>
-      <div className="w-full min-h-screen flex flex-col box-border">
-        <div className="pt-36 flex-shrink-0">
-          <h4 className="font-inter font-bold text-6xl text-[#8F9795] text-wrap leading-none my-0">
-            {"IT's ME"}
-          </h4>
-          <h1 className="font-inter font-bold text-8xl leading-none my-0 bg-gradient-to-r from-[#8F9795] to-[#5EA196] text-transparent bg-clip-text overflow-hidden hidden sm:block">
-            HOMEPAGE
-          </h1>
+    <div className="w-full min-h-screen flex flex-col box-border">
+      <div className="flex flex-col flex-grow w-full items-center gap-10 sm:flex-row sm:gap-x-10 overflow-auto py-10">
+        <div className="flex-shrink-0">
+          <MePieChart meInfos={ME_DATA} setMeInfo={setMeInfo} />
         </div>
-        <div className="flex flex-col flex-grow w-full items-center gap-10 sm:flex-row sm:gap-x-10 overflow-auto py-10">
-          <div className="flex-shrink-0">
-            <MePieChart />
-          </div>
-          <div className="flex-grow overflow-auto">
-            <MeDetail />
-          </div>
+        <div className="flex-grow overflow-auto">
+          {meInfo !== null ? <MeDetail meInfo={meInfo} /> : <MeMain />}
         </div>
       </div>
-    </SelectMeProvider>
+    </div>
   );
 }

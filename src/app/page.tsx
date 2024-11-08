@@ -9,9 +9,9 @@ import { useEffect, useRef, useState } from "react";
 import { MeProfileCardBody } from "./components/profile_card_components/me_profile_card_body";
 import { GitHubProfileCardBody } from "./components/profile_card_components/github_profile_card_body";
 import { Project } from "./components/project_info_components/project.component";
-import { SkillsInfo } from "./components/\bskill_components/skills_info.component";
 import { SkillProfileCardBody } from "./components/profile_card_components/skill_profile_card_body";
 import { ProjectProfileCardBody } from "./components/profile_card_components/project_profile_card_body";
+import { Skill } from "./components/skill_components/skill_component";
 
 const darkTheme = createTheme({
   cssVariables: true,
@@ -62,9 +62,9 @@ export default function Home() {
               case 2:
                 setProfileBody(<GitHubProfileCardBody />);
                 break;
-              
+
               case 3:
-                setProfileBody(<ProjectProfileCardBody/>);
+                setProfileBody(<ProjectProfileCardBody />);
                 break;
             }
           }
@@ -89,13 +89,14 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+      {/* <div className="flex justify-center gap-x-10 max-w-[1920px]"> */}
       <div className="flex justify-center gap-x-10 bg-custom-gradient bg-background">
         <div className="flex flex-col self-center justify-center xl:w-4/6 w-[95%]">
           <section ref={sectionRefs[0]}>
             <Me />
           </section>
           <section ref={sectionRefs[1]}>
-            <SkillsInfo />
+            <Skill />
           </section>
           <section ref={sectionRefs[2]}>
             <GitHub />
