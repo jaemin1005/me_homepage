@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #191919;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 
   --custom-blue: #012840;
   --custom-navy: #021826;
