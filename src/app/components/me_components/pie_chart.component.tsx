@@ -1,22 +1,14 @@
 import { PieItemIdentifier } from "@mui/x-charts";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useState } from "react";
-import {
-  RECORD_ME,
-  DRIVING_FORCE_ME,
-  PLANNING_SKILL,
-  PROBLEM_SOLVING_SKILL,
-} from "./me_info_objects";
-import { useMeState } from "../../../../context/select_me.context";
 
-export function MePieChart() {
-  const ME_DATA = [
-    DRIVING_FORCE_ME,
-    RECORD_ME,
-    PROBLEM_SOLVING_SKILL,
-    PLANNING_SKILL,
-  ];
-
+export function MePieChart({
+  meInfos,
+  setMeInfo,
+}: {
+  meInfos: MeInfo[];
+  setMeInfo: (meInfo: MeInfo | null) => void;
+}) {
   const colors = [
     "#288D92",
     "#469DA1",
@@ -27,8 +19,6 @@ export function MePieChart() {
     "#E0EEEF",
   ];
 
-  const { setMeInfo } = useMeState();
-
   const [highlightedItem, setHighlightedItem] =
     useState<PieItemIdentifier | null>(null);
   const valueFormatter = (item: { value: number }) => `${item.value}%`;
@@ -38,10 +28,10 @@ export function MePieChart() {
     pieItemIdentifier: PieItemIdentifier
   ) => {
     if (pieItemIdentifier.dataIndex === highlightedItem?.dataIndex) {
-      setMeInfo(undefined);
+      setMeInfo(null);
       setHighlightedItem(null);
     } else {
-      setMeInfo(ME_DATA[pieItemIdentifier.dataIndex]);
+      setMeInfo(meInfos[pieItemIdentifier.dataIndex]);
       setHighlightedItem(pieItemIdentifier);
     }
   };
@@ -69,7 +59,7 @@ export function MePieChart() {
           //     { id: 2, value: 10, label: "학습", color: "#26866E" },
           //     { id: 3, value: 10, label: "", color: "#1E6B58" },
           //   ],
-          data: ME_DATA.slice(0, 8).map((data, idx) => {
+          data: meInfos.slice(0, 8).map((data, idx) => {
             return {
               id: idx,
               value: data.percent,
