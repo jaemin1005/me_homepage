@@ -21,8 +21,8 @@ export const THEME_MAP: ProjectInfo = {
   imageUrl: "/projects/theme_map.webp",
   body: `
   이 프로젝트는 사용자들이 자신만의 지도를 생성하고 공유할 수 있는 플랫폼입니다. 사용자들은 지도에 여러 개의 마커를 추가하여 특정 테마에 맞는 지도를 만들 수 있으며, 
-  다른 사용자의 지도를 검색하고 가져와 활용할 수도 있습니다. 프론트엔드는 Next.js로 구성되었으며, 백엔드는 Docker와 EC2를 활용해 Actix-web 기반의 인증, 업로드, 지도 관리 3개의 
-  백앤드 서비스로 운영하고 있습니다`,
+  다른 사용자의 지도를 검색하고 가져와 활용할 수도 있습니다. 프론트엔드와 전반적인 렌더링 작업들은 Next.js로 구성되었으며, 서비스들은 Docker와 EC2를 활용해 Actix-web 기반의 인증, 업로드, 지도 관리 3개의 
+  백앤드로 운영하고 있습니다`,
 };
 
 export const FAST_EXCEl_TO_JSON: ProjectInfo = {
@@ -35,7 +35,7 @@ export const FAST_EXCEl_TO_JSON: ProjectInfo = {
     "https://lofty-judo-dd7.notion.site/Open_Port_Check-1238db2d50b78015987ec4cb547bcf22",
   githubUrl: "https://github.com/jaemin1005/excel-to-json-browser",
   imageUrl: "/projects/fast_excel_to_json.webp",
-  body: `이 프로젝트는 XLSX 및 CSV 파일을 JSON 형식으로 변환해주는 웹 애플리케이션입니다. 
+  body: `이 프로젝트는 .xlxs 및 .csv 파일을 Json 형식으로 변환해주는 웹 애플리케이션입니다. 
   주요 특징으로는 웹 어셈블리를 활용하여 변환 로직을 구현함으로써, 클라이언트 측에서 파일을 직접 변환할 수 있도록 하였습니다. 
   이를 통해 서버에 파일을 업로드하면서 발생할 수 있는 비용과 보안 문제를 효과적으로 제거하였습니다. 
   또한, 대용량 파일에 대해 멀티스레딩 기술을 적용하여 빠르고 효율적인 변환이 가능하도록 하였습니다`,
@@ -110,7 +110,7 @@ export const WHISPER_IN_A_BOTTLE: ProjectInfo = {
   skills: ["Nextjs", "Nestjs", "ThreeJs", "Socket.io", "Jest", "AWS RDS"],
   imageUrl: "/projects/wib.webp",
   body: `다른 유저들과 유리병을 통해 소통하는 프로젝트입니다. 사용자는 유리병 편지를 통해, 자신을 모르는 상대에게 감정과 이야기를 함으로 써
-  마음의 짐을 덜어낼 수 있습니다. 유리병은 실시간으로 주고 받을 수 있게 하기 위화에 socket.io를 통해 편지의 송수신을 구현하였습니다. 또한 로직에
+  마음의 짐을 덜어내는 것이 주 목적인 프로젝트입니다. 유리병은 실시간으로 주고 받을 수 있게 하기 위해 socket.io를 통해 편지의 송수신을 구현하였습니다. 또한 로직에
   Jest로 로직을 검증하여 신뢰성과 협업 효율성을 높였습니다.`,
 };
 
