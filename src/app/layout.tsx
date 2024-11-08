@@ -17,8 +17,9 @@ export default function RootLayout({
     <html lang="en">
       <AppRouterCacheProvider options={{ enableCssLayer: true }}>
         <GitStateProvider>
-          {/* <body className="flex justify-center bg-custom-gradient bg-background"> */}
-          <body>{children}</body>
+          <body className="flex justify-center bg-custom-gradient bg-background">
+            {children}
+          </body>
         </GitStateProvider>
       </AppRouterCacheProvider>
     </html>

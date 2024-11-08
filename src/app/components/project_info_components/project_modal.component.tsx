@@ -1,4 +1,4 @@
-import { Card, CardMedia, Chip, Modal, Tooltip } from "@mui/material";
+import { Card, CardMedia, Chip, IconButton, Modal, Tooltip } from "@mui/material";
 import { ProjectInfo } from "../../../../interfaces/project_info.interface";
 import { Button } from "@mui/material";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
@@ -7,7 +7,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { openWindow } from "../../../../utils/open_window";
-
+import CloseIcon from '@mui/icons-material/Close';
 interface ModalControlProps {
   open: boolean;
   handleClose: () => void;
@@ -133,6 +133,18 @@ export function ProjectModal({
           <h3 className="mt-3 mb-1 font-semibold text-xl">개요</h3>
           <p className="text-justify mt-0">{projectInfo.body}</p>
         </section>
+        <IconButton
+            aria-label="close"
+            onClick={modalControl.handleClose}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+            }}
+            className="top-2 right-2 absolute text-[#33a9af]"
+          >
+            <CloseIcon />
+          </IconButton>
       </Card>
     </Modal>
   );

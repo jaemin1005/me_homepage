@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { language } from "./objects/language_objects";
 import { webFramwork } from "./objects/web_frameworks.object";
-import { SkillBarChart } from "./skills_info.component";
+import { SkillBarChart } from "./skills_bar_chart.component";
 import { SkillChart } from "../../../../interfaces/skill.interface";
-import { SkillSelect } from "./skills_container.component";
+import { SkillSelect } from "./skills_select_buttons.component";
 import { Typography } from "@mui/material";
 
 export function Skill() {

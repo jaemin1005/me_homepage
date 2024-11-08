@@ -38,6 +38,24 @@ const darkTheme = createTheme({
 export default function Home() {
   const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
   const [profileBody, setProfileBody] = useState(<MeProfileCardBody />);
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const screenHeight = window.innerHeight;
+      const newOpacity = Math.min(scrollY / screenHeight, 1); // 0에서 1까지 제한
+      setOpacity(newOpacity);
+    };
+
+    // 페이지 로드 시 현재 스크롤 위치에 맞춰 opacity 설정
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     // observer를 이용하여 세션마다 감지한다.
@@ -52,7 +70,7 @@ export default function Home() {
 
             switch (index) {
               case 0:
-                setProfileBody(<MeProfileCardBody />);
+                setProfileBody(<SkillProfileCardBody />);
                 break;
 
               case 1:
@@ -89,9 +107,9 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      {/* <div className="flex justify-center gap-x-10 max-w-[1920px]"> */}
-      <div className="flex justify-center gap-x-10 bg-custom-gradient bg-background">
-        <div className="flex flex-col self-center justify-center xl:w-4/6 w-[95%]">
+      <div className="flex justify-center gap-x-10 max-w-[1920px] w-[98%]">
+        {/* <div className="flex justify-center gap-x-10 bg-custom-gradient bg-background"> */}
+        <div className="flex flex-col self-center justify-center xl:w-4/6 w-full xl:max-w-[1200px]">
           <section ref={sectionRefs[0]}>
             <Me />
           </section>
@@ -105,7 +123,10 @@ export default function Home() {
             <Project />
           </section>
         </div>
-        <div className="hidden xl:block w-1/5 max-w-[400px] min-x-[300px]">
+        <div
+          style={{ opacity }}
+          className="hidden xl:block w-1/5 max-w-[400px] min-x-[300px] transition-opacity"
+        >
           <ProfileCard>{profileBody}</ProfileCard>
         </div>
       </div>
