@@ -21,8 +21,8 @@ export const THEME_MAP: ProjectInfo = {
   imageUrl: "/projects/theme_map.webp",
   body: `
   이 프로젝트는 사용자들이 자신만의 지도를 생성하고 공유할 수 있는 플랫폼입니다. 사용자들은 지도에 여러 개의 마커를 추가하여 특정 테마에 맞는 지도를 만들 수 있으며, 
-  다른 사용자의 지도를 검색하고 가져와 활용할 수도 있습니다. 프론트엔드와 전반적인 렌더링 작업들은 Next.js로 구성되었으며, 서비스들은 Docker와 EC2를 활용해 Actix-web 기반의 인증, 업로드, 지도 관리 3개의 
-  백앤드로 운영하고 있습니다`,
+  다른 사용자의 지도를 검색하고 활용할 수 있습니다. 프론트엔드는 Next.js로 구성되어 있으며, 전반적인 렌더링 작업을 담당합니다. 
+  백엔드는 Docker와 EC2를 활용하여 Actix-web 기반의 인증, 업로드, 지도 관리 서비스의 3개 컨테이너로 운영되고 있습니다.`,
 };
 
 export const FAST_EXCEl_TO_JSON: ProjectInfo = {
@@ -35,10 +35,10 @@ export const FAST_EXCEl_TO_JSON: ProjectInfo = {
     "https://lofty-judo-dd7.notion.site/Open_Port_Check-1238db2d50b78015987ec4cb547bcf22",
   githubUrl: "https://github.com/jaemin1005/excel-to-json-browser",
   imageUrl: "/projects/fast_excel_to_json.webp",
-  body: `이 프로젝트는 .xlxs 및 .csv 파일을 Json 형식으로 변환해주는 웹 애플리케이션입니다. 
-  주요 특징으로는 웹 어셈블리를 활용하여 변환 로직을 구현함으로써, 클라이언트 측에서 파일을 직접 변환할 수 있도록 하였습니다. 
+  body: `.xlsx 및 .csv 파일을 JSON 형식으로 변환해주는 웹 애플리케이션입니다. 
+  주요 특징으로는 웹 어셈블리를 활용하여 변환 로직을 클라이언트 측에서 구현함으로써, 사용자가 파일을 직접 변환할 수 있도록 하였습니다. 
   이를 통해 서버에 파일을 업로드하면서 발생할 수 있는 비용과 보안 문제를 효과적으로 제거하였습니다. 
-  또한, 대용량 파일에 대해 멀티스레딩 기술을 적용하여 빠르고 효율적인 변환이 가능하도록 하였습니다`,
+  또한, 대용량 파일에 대해 멀티스레딩 기술을 적용하여 빠르고 효율적인 변환이 가능하도록 하였습니다.`,
 };
 
 export const HOME_PAGE: ProjectInfo = {
@@ -48,9 +48,9 @@ export const HOME_PAGE: ProjectInfo = {
     "https://lofty-judo-dd7.notion.site/1308db2d50b780e2b415f34a3e655349",
   githubUrl: "https://github.com/jaemin1005/me_homepage",
   imageUrl: "/projects/me_homepage.webp",
-  body: `나 자신을 표현하기 위해 만든 웹페이지입니다.주요 목표는 그래프를 통해 제 활동과 성취를 시각적으로 나타내는 것입니다.
-  그래프의 데이터는 AWS Lambda와 AWS Event bridge를 통해 하루마다 이벤트가 트리거됩니다.
-  이벤트가 트리거 될 시, Github API를 통해 데이터를 받아오며, MongoDB에 저장됩니다.`,
+  body: `이 웹페이지는 나 자신을 표현하기 위해 만든 페이지로, 주요 목표는 그래프를 통해 제 활동과 성취를 시각적으로 나타내는 것입니다. 
+  그래프의 데이터는 AWS Lambda와 AWS EventBridge를 활용하여 매일 이벤트가 트리거됩니다. 이때, 이벤트가 발생하면 GitHub API를 통해 데이터를 받아오고, 
+  이를 MongoDB에 저장하여 그래프를 업데이트합니다.`,
 };
 
 export const OPEN_PORT_CHECK: ProjectInfo = {
