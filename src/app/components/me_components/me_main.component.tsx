@@ -13,14 +13,13 @@ int main() {
 export function MeMain() {
   const [typedCode, setTypedCode] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
-  useEffect(() => {
-    let i = 0;
+  const idxRef = useRef(0);
 
+  useEffect(() => {
     function typeCharacter() {
-      if (i < codeString.length) {
-        setTypedCode((prev) => prev + codeString[i]);
-        i++;
+      if (idxRef.current < codeString.length) {
+        setTypedCode((prev) => prev + codeString[idxRef.current]);
+        idxRef.current++;
         timeoutRef.current = setTimeout(typeCharacter, 50); // 타이핑 속도 조절
       }
     }
