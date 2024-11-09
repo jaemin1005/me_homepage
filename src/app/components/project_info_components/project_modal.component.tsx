@@ -1,4 +1,4 @@
-import { Card, CardMedia, Chip, Modal, Tooltip } from "@mui/material";
+import { Card, CardMedia, Chip, IconButton, Modal, Tooltip } from "@mui/material";
 import { ProjectInfo } from "../../../../interfaces/project_info.interface";
 import { Button } from "@mui/material";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
@@ -7,7 +7,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { openWindow } from "../../../../utils/open_window";
-
+import CloseIcon from '@mui/icons-material/Close';
 interface ModalControlProps {
   open: boolean;
   handleClose: () => void;
@@ -40,7 +40,7 @@ export function ProjectModal({
       <Card
         sx={{ ...style }}
         className="bg-[linear-gradient(0deg,rgba(235,217,217,0)_0%,rgba(41,141,146,0.2)_100%)]
-            shadow-md shadow-black backdrop-blur-sm md:w-[500px] h-2/3 rounded-[20px] overflow-y-scroll"
+            shadow-md shadow-black backdrop-blur-sm md:w-[500px] max-h-[700px] rounded-[20px] overflow-y-scroll scrollbar-hidden"
       >
         {/* <CardHeader title={projectInfo.name} /> */}
         <CardMedia
@@ -73,7 +73,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<PublicIcon />}
-                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.publishUrl!);
                 }}
@@ -85,7 +85,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<YouTubeIcon />}
-                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#af516d] text-[#af516d] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.videoUrl!);
                 }}
@@ -97,7 +97,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<ImportContactsIcon />}
-                className="border-[#8ac55c] text-[#8ac55c] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#8ac55c] text-[#8ac55c] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.reviewUrl!);
                 }}
@@ -109,7 +109,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<EditNoteIcon />}
-                className="border-[#b7c656] text-[#b7c656] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#b7c656] text-[#b7c656] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.notedUrl!);
                 }}
@@ -121,7 +121,7 @@ export function ProjectModal({
               <Button
                 variant="outlined"
                 startIcon={<GitHubIcon />}
-                className="border-[#6287c6] text-[#6287c6] hover:text-[#298D92] hover:border-[#298D92]"
+                className="border-[#6287c6] text-[#6287c6] hover:text-[#298D92] hover:border-[#298D92] whitespace-nowrap"
                 onClick={() => {
                   openWindow(projectInfo.githubUrl!);
                 }}
@@ -131,8 +131,20 @@ export function ProjectModal({
             )}
           </div>
           <h3 className="mt-3 mb-1 font-semibold text-xl">개요</h3>
-          <p>{projectInfo.body}</p>
+          <p className="text-justify mt-0">{projectInfo.body}</p>
         </section>
+        <IconButton
+            aria-label="close"
+            onClick={modalControl.handleClose}
+            sx={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+            }}
+            className="top-2 right-2 absolute text-[#33a9af]"
+          >
+            <CloseIcon />
+          </IconButton>
       </Card>
     </Modal>
   );

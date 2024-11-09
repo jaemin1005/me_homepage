@@ -113,6 +113,9 @@ export function Chart() {
 
   // 날짜별 커밋 수를 계산하는 함수
   const dataset = useMemo(() => {
+
+    if(gitData === undefined) return [];
+
     const commitsByMonth: { [key: string]: number } = {};
 
     gitData.forEach((repo) => {
@@ -137,7 +140,7 @@ export function Chart() {
 
   // 선택된 월의 일일 데이터셋
   const dailyDataset = useCallback(() => {
-    if (!selectedMonth && !name) return [];
+    if (!selectedMonth && !name && !gitData) return [];
 
     const commitsByDay: { [key: string]: number } = {};
 

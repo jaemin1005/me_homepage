@@ -53,7 +53,7 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   right: 0,
   top: 0,
   bottom: 0,
-  backgroundColor: theme.palette.common.black,
+  backgroundColor: "#175154",
   opacity: 0.4,
   transition: theme.transitions.create("opacity"),
 }));
@@ -111,7 +111,7 @@ export function ProjectInfo({
             key={idx}
             label={value}
             variant="outlined"
-            className="text-[#B6AFAF] border-2 font-semibold border-[#B6AFAF] shadow-md shadow-black"
+            className="text-[#5A6161] border-2 font-semibold border-[#5A6161] shadow-md shadow-black"
           />
         ))}
       </div>
