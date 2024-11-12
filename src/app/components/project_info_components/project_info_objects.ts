@@ -32,7 +32,7 @@ export const FAST_EXCEl_TO_JSON: ProjectInfo = {
     "https://lofty-judo-dd7.notion.site/Fast-Excel-To-Json-406459c68cf542408fbff2ca743d2b51?pvs=74",
   publishUrl: "https://fastexceltojson.com/",
   notedUrl:
-    "https://lofty-judo-dd7.notion.site/Open_Port_Check-1238db2d50b78015987ec4cb547bcf22",
+    "https://lofty-judo-dd7.notion.site/Excel-To-Json-c89d2a4563c4444789f6141e7300fe9b",
   githubUrl: "https://github.com/jaemin1005/excel-to-json-browser",
   imageUrl: "/projects/fast_excel_to_json.webp",
   body: `.xlsx 및 .csv 파일을 JSON 형식으로 변환해주는 웹 애플리케이션입니다. 
