@@ -46,7 +46,7 @@ WEB_FRAMEWORK_ROWS.forEach((value, idx) => {
 });
 
 export const webFramwork = new SkillChart(
-  "Web Framework",
+  "Framework",
   WEB_FRAMEWORK_ROWS,
   [NEXT_JS, NEST_JS, ACTIX_WEB],
   WEB_FRAMEWORK_EXPLAIN
